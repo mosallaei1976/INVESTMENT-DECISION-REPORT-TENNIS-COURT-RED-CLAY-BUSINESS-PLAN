@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BusinessPlanSection } from '../../types';
-import { BookOpen, Search, Download, Copy, Check, FileText, Sparkles, Tag } from 'lucide-react';
+import { BookOpen, Search, Download, Copy, Check, FileText, Sparkles, Tag, Mail, Youtube, Linkedin, Github, Send } from 'lucide-react';
 
 interface BusinessPlanViewProps {
   sections: BusinessPlanSection[];
@@ -149,6 +149,105 @@ export const BusinessPlanView: React.FC<BusinessPlanViewProps> = ({
 
           </div>
         ))}
+      </div>
+
+      {/* Contact Information Footer Card */}
+      <div className="bg-[#0D1117] border border-[#D4AF37]/40 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div className="flex items-center gap-3 border-b border-[#30363D] pb-3">
+          <div className="p-2.5 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20">
+            <Mail className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-[#D4AF37]">
+              {isFa ? 'راه‌های ارتباط با بنیان‌گذار (محمد مصلی‌ئی)' : 'Founder Contact Information (Mohammad Mosallaei)'}
+            </h3>
+            <p className="text-xs text-[#8B949E]">
+              {isFa ? 'ارتباط مستقیم جهت بررسی گزارش‌های تحقیق، سرمایه‌گذاری و مشارکت استراتژیک' : 'Direct contact channels for inquiries and partnership'}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2">
+          {/* Email */}
+          <a
+            href="mailto:mosallaei@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-[#161B22] border border-[#30363D] hover:border-[#D4AF37] rounded-xl flex items-center gap-3 text-xs text-[#E0E0E0] transition group"
+          >
+            <div className="p-2 rounded-lg bg-[#0A0C10] text-[#D4AF37]">
+              <Mail className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-[10px] text-[#8B949E] block">E-mail</span>
+              <span className="font-mono font-bold text-[#E0E0E0] group-hover:text-[#D4AF37]">mosallaei@gmail.com</span>
+            </div>
+          </a>
+
+          {/* YouTube */}
+          <a
+            href="https://youtube.com/@mosallaei.architect"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-[#161B22] border border-[#30363D] hover:border-red-500 rounded-xl flex items-center gap-3 text-xs text-[#E0E0E0] transition group"
+          >
+            <div className="p-2 rounded-lg bg-[#0A0C10] text-red-400">
+              <Youtube className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-[10px] text-[#8B949E] block">YouTube</span>
+              <span className="font-mono font-bold text-[#E0E0E0] group-hover:text-red-400">@mosallaei.architect</span>
+            </div>
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/mohamad-mosallaei/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-[#161B22] border border-[#30363D] hover:border-blue-400 rounded-xl flex items-center gap-3 text-xs text-[#E0E0E0] transition group"
+          >
+            <div className="p-2 rounded-lg bg-[#0A0C10] text-blue-400">
+              <Linkedin className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-[10px] text-[#8B949E] block">LinkedIn</span>
+              <span className="font-mono font-bold text-[#E0E0E0] group-hover:text-blue-400">mohamad-mosallaei</span>
+            </div>
+          </a>
+
+          {/* GitHub */}
+          <a
+            href="https://github.com/mosallaei1976"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-[#161B22] border border-[#30363D] hover:border-purple-400 rounded-xl flex items-center gap-3 text-xs text-[#E0E0E0] transition group"
+          >
+            <div className="p-2 rounded-lg bg-[#0A0C10] text-purple-400">
+              <Github className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-[10px] text-[#8B949E] block">GitHub</span>
+              <span className="font-mono font-bold text-[#E0E0E0] group-hover:text-purple-400">mosallaei1976</span>
+            </div>
+          </a>
+
+          {/* Telegram */}
+          <a
+            href="https://t.me/msli1976"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-[#161B22] border border-[#30363D] hover:border-cyan-400 rounded-xl flex items-center gap-3 text-xs text-[#E0E0E0] transition group"
+          >
+            <div className="p-2 rounded-lg bg-[#0A0C10] text-cyan-400">
+              <Send className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-[10px] text-[#8B949E] block">Telegram</span>
+              <span className="font-mono font-bold text-[#E0E0E0] group-hover:text-cyan-400">t.me/msli1976</span>
+            </div>
+          </a>
+        </div>
       </div>
 
     </div>

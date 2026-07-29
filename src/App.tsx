@@ -137,6 +137,15 @@ ${criteria.map(c => `| ${c.id} | ${c.name} | ${c.weight}% | ${c.score}/100 | ${c
       md += `### Section ${sec.titleNumber}: ${sec.titleEn} [${sec.evidenceTag}]\n\n${sec.contentMarkdown}\n\n---\n\n`;
     });
 
+    md += `## CONTACT INFORMATION / راه‌های ارتباطی با بنیان‌گذار
+
+- **E-mail:** mosallaei@gmail.com
+- **YouTube:** @mosallaei.architect
+- **LinkedIn:** https://www.linkedin.com/in/mohamad-mosallaei/
+- **GitHub:** mosallaei1976
+- **Telegram:** t.me/msli1976
+`;
+
     const blob = new Blob([md], { type: 'text/markdown;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
