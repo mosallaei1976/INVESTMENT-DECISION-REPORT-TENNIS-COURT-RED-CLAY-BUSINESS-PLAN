@@ -1,6 +1,5 @@
 import React from 'react';
 import { Mail, Youtube, Linkedin, Github, Send, ShieldCheck, Heart } from 'lucide-react';
-import { MosallaeiLogo } from './MosallaeiLogo';
 
 interface FooterProps {
   lang: 'fa' | 'en';
@@ -15,19 +14,15 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
         
         {/* Top Header & Branding */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#30363D]">
-          <div className="flex items-center gap-4">
-            <MosallaeiLogo size="lg" showTagline={true} />
-            <div className="h-10 w-[1px] bg-[#30363D] hidden sm:block"></div>
-            <div className="space-y-1">
-              <h3 className="text-sm font-bold text-[#D4AF37] tracking-wide dir-auto">
-                Clay Tennis Court Investment Cockpit | Mohammad Mosallaei (Iran Sourcing & EU Export)
-              </h3>
-              <p className="text-xs text-[#8B949E] dir-auto">
-                {isFa
-                  ? 'اتاق تحقیق اختصاصی محمد مصلایی | صادرات خاک رس ایران به اروپا'
-                  : 'Mohammad Mosallaei\'s Private Research Cockpit | Iranian Clay Export to EU'}
-              </p>
-            </div>
+          <div className="space-y-1">
+            <h3 className="text-sm font-bold text-[#D4AF37] tracking-wide dir-auto">
+              Clay Tennis Court Investment Cockpit | Mohammad Mosallaei (Iran Sourcing & EU Export)
+            </h3>
+            <p className="text-xs text-[#8B949E] dir-auto">
+              {isFa
+                ? 'اتاق تحقیق اختصاصی محمد مصلایی | صادرات خاک رس ایران به اروپا'
+                : 'Mohammad Mosallaei\'s Private Research Cockpit | Iranian Clay Export to EU'}
+            </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs text-[#8B949E] font-mono bg-[#161B22] px-3 py-1.5 rounded-lg border border-[#30363D]">

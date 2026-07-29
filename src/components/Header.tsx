@@ -1,7 +1,6 @@
 import React from 'react';
 import { InvestmentDecision } from '../types';
 import { ShieldCheck, AlertTriangle, FileText, Download, CheckCircle, Clock, Printer } from 'lucide-react';
-import { MosallaeiLogo } from './MosallaeiLogo';
 
 interface HeaderProps {
   decision: InvestmentDecision;
@@ -55,18 +54,19 @@ export const Header: React.FC<HeaderProps> = ({
         
         {/* Left: Branding & User Context */}
         <div className="flex items-center gap-3">
-          <MosallaeiLogo size="md" showTagline={true} />
-          <div className="h-8 w-[1px] bg-[#30363D] hidden sm:block mx-1"></div>
+          <div className="w-10 h-10 rounded-lg bg-[#D4AF37] flex items-center justify-center text-[#0A0C10] font-black text-sm shadow-lg shadow-amber-950/40 border border-[#D4AF37]/40">
+            IA
+          </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold text-[#D4AF37] tracking-tight">
-                {isFa ? 'ماتریس تصمیم‌گیری صادرات خاک تنیس' : 'Clay Court Export Decision Matrix'}
+              <h1 className="text-lg font-bold text-[#D4AF37] tracking-tight">
+                {isFa ? 'ماتریس تصمیم‌گیری سرمایه‌گذاری خاک تنیس' : 'Clay Court Investment Decision Matrix'}
               </h1>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#161B22] text-[#8B949E] border border-[#30363D] font-mono">
-                v1.5
+              <span className="text-xs px-2 py-0.5 rounded bg-[#161B22] text-[#8B949E] border border-[#30363D] font-mono">
+                v1.4
               </span>
             </div>
-            <p className="text-[11px] text-[#8B949E]">
+            <p className="text-xs text-[#8B949E]">
               {isFa
                 ? 'اتاق تحقیق اختصاصی محمد مصلایی | صادرات خاک رس ایران به اروپا'
                 : 'Mohammad Mosallaei\'s Private Research Cockpit | Iranian Clay Export to EU'}
