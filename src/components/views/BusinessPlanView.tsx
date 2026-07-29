@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { BusinessPlanSection } from '../../types';
-import { BookOpen, Search, Download, Copy, Check, FileText, Sparkles, Tag, Mail, Youtube, Linkedin, Github, Send } from 'lucide-react';
+import { BookOpen, Search, Download, Copy, Check, FileText, Sparkles, Tag, Mail, Youtube, Linkedin, Github, Send, Printer } from 'lucide-react';
 
 interface BusinessPlanViewProps {
   sections: BusinessPlanSection[];
   lang: 'fa' | 'en';
   onExportMarkdown: () => void;
+  onExportPDF?: () => void;
 }
 
 export const BusinessPlanView: React.FC<BusinessPlanViewProps> = ({
   sections,
   lang,
-  onExportMarkdown
+  onExportMarkdown,
+  onExportPDF
 }) => {
   const isFa = lang === 'fa';
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,7 +52,7 @@ export const BusinessPlanView: React.FC<BusinessPlanViewProps> = ({
   };
 
   return (
-    <div className="space-y-6">
+    <div id="business-plan-container" className="space-y-6">
       
       {/* Header & Controls */}
       <div className="bg-[#0D1117] border border-[#2D333B] rounded-2xl p-6 shadow-xl space-y-4">
@@ -69,13 +71,26 @@ export const BusinessPlanView: React.FC<BusinessPlanViewProps> = ({
             </div>
           </div>
 
-          <button
-            onClick={onExportMarkdown}
-            className="px-4 py-2 bg-[#D4AF37] hover:bg-amber-400 text-[#0A0C10] font-bold rounded-xl text-xs flex items-center gap-2 transition shadow-md shadow-amber-950/30 self-start sm:self-center"
-          >
-            <Download className="w-4 h-4" />
-            <span>{isFa ? 'دانلود کامل (Markdown .md)' : 'Export Full Plan (.md)'}</span>
-          </button>
+          <div className="flex items-center gap-2 self-start sm:self-center flex-wrap">
+            <button
+              onClick={() => {
+                if (onExportPDF) onExportPDF();
+                else window.print();
+              }}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs flex items-center gap-2 transition shadow-md self-start sm:self-center"
+            >
+              <Printer className="w-4 h-4" />
+              <span>{isFa ? 'خروجی PDF / چاپ' : 'Export PDF / Print'}</span>
+            </button>
+
+            <button
+              onClick={onExportMarkdown}
+              className="px-4 py-2 bg-[#D4AF37] hover:bg-amber-400 text-[#0A0C10] font-bold rounded-xl text-xs flex items-center gap-2 transition shadow-md shadow-amber-950/30 self-start sm:self-center"
+            >
+              <Download className="w-4 h-4" />
+              <span>{isFa ? 'دانلود کامل (Markdown .md)' : 'Export Full Plan (.md)'}</span>
+            </button>
+          </div>
         </div>
 
         {/* Search & Filter */}

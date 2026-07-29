@@ -10,3 +10,52 @@ body {
   background-color: #0A0C10;
   color: #E0E0E0;
 }
+
+/* Print & PDF Export Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt;
+  }
+
+  /* Hide navigation, buttons, and unneeded interactive UI elements during PDF print */
+  header,
+  nav,
+  button,
+  .no-print,
+  footer {
+    display: none !important;
+  }
+
+  /* Force dark cards to render cleanly in print */
+  div, section, article {
+    background-color: transparent !important;
+    color: #111111 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-after: avoid;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Avoid breaking cards inside pages */
+  .border, .rounded-xl, .rounded-2xl {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 12pt;
+  }
+}

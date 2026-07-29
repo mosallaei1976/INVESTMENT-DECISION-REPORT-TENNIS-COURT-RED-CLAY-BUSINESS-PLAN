@@ -1,6 +1,6 @@
 import React from 'react';
 import { InvestmentDecision } from '../types';
-import { ShieldCheck, AlertTriangle, FileText, Download, CheckCircle, Clock, Layers } from 'lucide-react';
+import { ShieldCheck, AlertTriangle, FileText, Download, CheckCircle, Clock, Printer } from 'lucide-react';
 
 interface HeaderProps {
   decision: InvestmentDecision;
@@ -8,6 +8,7 @@ interface HeaderProps {
   setLang: (l: 'fa' | 'en') => void;
   onExportMarkdown: () => void;
   onExportJSON: () => void;
+  onExportPDF: () => void;
   activeTab: string;
 }
 
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   setLang,
   onExportMarkdown,
   onExportJSON,
+  onExportPDF,
 }) => {
   const isFa = lang === 'fa';
 
@@ -66,8 +68,8 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <p className="text-xs text-[#8B949E]">
               {isFa
-                ? 'اتاق تحقیق اختصاصی محمد | صادرات خاک رس ایران به اروپا'
-                : 'Mohammad\'s Private Research Cockpit | Iranian Clay Export to EU'}
+                ? 'اتاق تحقیق اختصاصی محمد مصلایی | صادرات خاک رس ایران به اروپا'
+                : 'Mohammad Mosallaei\'s Private Research Cockpit | Iranian Clay Export to EU'}
             </p>
           </div>
         </div>
@@ -114,6 +116,13 @@ export const Header: React.FC<HeaderProps> = ({
               <span>{isFa ? 'خروجی گزارش' : 'Export Report'}</span>
             </button>
             <div className="absolute right-0 top-full mt-1 w-48 bg-[#0D1117] border border-[#2D333B] rounded-xl shadow-xl hidden group-hover:block p-1.5 z-50">
+              <button
+                onClick={onExportPDF}
+                className="w-full text-left px-3 py-2 text-xs text-[#E0E0E0] hover:bg-[#161B22] rounded-lg flex items-center gap-2 transition"
+              >
+                <Printer className="w-3.5 h-3.5 text-blue-400" />
+                <span>{isFa ? 'چاپ و خروجی PDF (.pdf)' : 'Export PDF (.pdf)'}</span>
+              </button>
               <button
                 onClick={onExportMarkdown}
                 className="w-full text-left px-3 py-2 text-xs text-[#E0E0E0] hover:bg-[#161B22] rounded-lg flex items-center gap-2 transition"

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Navigation, NavTab } from './components/Navigation';
+import { Footer } from './components/Footer';
+import { exportToPDF } from './utils/pdfExport';
+import { Download, Loader2, CheckCircle2 } from 'lucide-react';
 
 // Domain Views
 import { DashboardView } from './components/views/DashboardView';
@@ -181,7 +184,17 @@ ${criteria.map(c => `| ${c.id} | ${c.name} | ${c.weight}% | ${c.score}/100 | ${c
     document.body.removeChild(link);
   };
 
+  const [pdfExportStatus, setPdfExportStatus] = useState<string | null>(null);
+
   const isFa = lang === 'fa';
+
+  // Export / Print to PDF
+  const handleExportPDF = () => {
+    exportToPDF(
+      `Mohammad_Mosallaei_Clay_Tennis_Court_Investment_Report_${Date.now()}.pdf`,
+      (status) => setPdfExportStatus(status)
+    );
+  };
 
   return (
     <div className={`min-h-screen bg-[#0A0C10] text-[#E0E0E0] font-sans antialiased ${isFa ? 'dir-rtl' : 'dir-ltr'}`}>
@@ -193,6 +206,7 @@ ${criteria.map(c => `| ${c.id} | ${c.name} | ${c.weight}% | ${c.score}/100 | ${c
         setLang={setLang}
         onExportMarkdown={handleExportMarkdown}
         onExportJSON={handleExportJSON}
+        onExportPDF={handleExportPDF}
         activeTab={activeTab}
       />
 
@@ -320,17 +334,26 @@ ${criteria.map(c => `| ${c.id} | ${c.name} | ${c.weight}% | ${c.score}/100 | ${c
             sections={INITIAL_BUSINESS_PLAN_SECTIONS}
             lang={lang}
             onExportMarkdown={handleExportMarkdown}
+            onExportPDF={handleExportPDF}
           />
         )}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#2D333B] bg-[#0D1117] py-6 text-center text-xs text-[#8B949E] font-mono">
-        <p>Clay Tennis Court Investment Cockpit | Mohammad (Iran Sourcing & EU Export)</p>
-        <p className="text-[11px] text-[#8B949E]/70 mt-1">
-          Strict Evidence Rule: AI text is Tier 4. Primary physical & legal sources required for GATE clearance.
-        </p>
-      </footer>
+      <Footer lang={lang} />
+
+      {/* PDF Generation Toast / Modal */}
+      {pdfExportStatus && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0D1117] border border-[#D4AF37] px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce no-print">
+          <Loader2 className="w-5 h-5 text-[#D4AF37] animate-spin shrink-0" />
+          <div className="text-xs">
+            <span className="font-bold text-[#E0E0E0] block">{pdfExportStatus}</span>
+            <span className="text-[10px] text-[#8B949E] block">
+              {isFa ? 'لطفاً صبور باشید، فایل PDF در حال تولید و دانلود خودکار است...' : 'Generating vector PDF download, please wait...'}
+            </span>
+          </div>
+        </div>
+      )}
 
     </div>
   );
