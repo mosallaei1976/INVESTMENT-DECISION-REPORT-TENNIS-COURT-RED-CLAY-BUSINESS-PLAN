@@ -1,0 +1,6 @@
+{
+  "name": "Clay Tennis Court Investment Decision Matrix & Research Cockpit",
+  "description": "Private AI investment decision cockpit, claim extraction engine, supply chain simulator, and European entry planner for premium Iranian clay tennis court surface export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
