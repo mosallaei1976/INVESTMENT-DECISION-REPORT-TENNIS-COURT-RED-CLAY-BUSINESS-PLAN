@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BusinessPlanSection } from '../../types';
 import { BookOpen, Search, Download, Copy, Check, FileText, Sparkles, Tag, Mail, Youtube, Linkedin, Github, Send, Printer } from 'lucide-react';
+import { MosallaeiLogo } from '../MosallaeiLogo';
 
 interface BusinessPlanViewProps {
   sections: BusinessPlanSection[];
@@ -57,10 +58,9 @@ export const BusinessPlanView: React.FC<BusinessPlanViewProps> = ({
       {/* Header & Controls */}
       <div className="bg-[#0D1117] border border-[#2D333B] rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#2D333B] pb-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20">
-              <BookOpen className="w-6 h-6" />
-            </div>
+          <div className="flex items-center gap-4">
+            <MosallaeiLogo size="lg" showTagline={true} />
+            <div className="h-10 w-[1px] bg-[#30363D] hidden sm:block"></div>
             <div>
               <h2 className="text-lg font-bold text-[#D4AF37]">
                 {isFa ? 'طرح کسب‌وکار صادرات خاک تنیس به اروپا (۲۴ بخش)' : 'European Clay Court Business Plan (24 Sections)'}
